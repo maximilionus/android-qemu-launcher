@@ -10,7 +10,7 @@ Everything you need, to run Android on Linux with hardware acceleration.
 ### Main
 1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`
 2. Create the new virtual drive by running the script in `./drives/create-disk`
-   > Note  
+   > **Note**  
    > Edit the `20G` max. size to your preferring. The disk is allocated dynamically, so it occupies the allowed space only when needed.
 3. Launch the [installer script](./vm-install.sh) and procceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with GPT layout
 
@@ -27,7 +27,7 @@ Everything you need, to run Android on Linux with hardware acceleration.
    ```
 
 ### (Optional) ARM Support
-> Note  
+> **Note**  
 > For this method to work, you should install your system in **read/write** mode. You're basically asked to do so on the installer, right after formatting the drive
 
 1. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation.
@@ -62,7 +62,7 @@ Everything you need, to run Android on Linux with hardware acceleration.
    ```sh
    enable_nativebridge
    ```
-   > Note  
+   > **Note**  
    > Script does not provide any echo output, which means that after it completes and does not return an error code is a success
 
 10. That's it, now reboot the emulator and you're ready to go
