@@ -3,14 +3,11 @@
 Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceleration and ARM translation.
 
 
-## Steps
-### Requirements
-- Qemu
-- [Virtio](https://www.linux-kvm.org/page/Virtio) paravirtualized drivers *(Probably are already installed with qemu)*
-- *(Optional. For [ARM support](#optional-arm-support))* [android-tools](https://developer.android.com/tools/releases/platform-tools)
+## Install
+> **Requirements**  
+> - Qemu
+> - [Virtio](https://www.linux-kvm.org/page/Virtio) paravirtualized drivers *(Probably are already installed with qemu)*
 
-
-### Main
 1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`
 2. Create the new virtual drive by running the script in `./drives/create-disk`
    > **Note**  
@@ -30,9 +27,14 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    ```
 
 
-### (Optional) ARM Support
-> **Note**  
+## Post-Install
+### ARM Support
+> **Warning**  
 > For this method to work, you should install your system in **read/write** mode. You're basically asked to do so on the installer, right after formatting the drive
+
+> **Requirements**  
+> - [android-tools](https://developer.android.com/tools/releases/platform-tools)
+
 
 1. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation.
 2. Rename the downloaded file to `houdini9_y.sfs` and place it in `./patches/`
