@@ -43,7 +43,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    ```sh
    adb connect localhost:4444
    ```
-   Output:
+   *Output:*
    ```Log
    connected to localhost:4444
    ```
@@ -51,7 +51,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    ```sh
    adb push ./patches/houdini9_y.sfs /sdcard/arm/
    ```
-   Output:
+   *Output:*
    ```Log
    ./patches/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
    ```
