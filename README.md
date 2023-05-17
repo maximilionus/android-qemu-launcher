@@ -41,7 +41,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    > If the file was downloaded from a *mirror*, rename it to `houdini9_y.sfs`
 2. Start the Android emulator with [main run script](./vm-run.sh)
 3. Inside emulator, go to **Settings App -> Android x86 Options** and switch on the **Enable native bridge**
-4. Ensure that **Developer mode** with **USB Debugging** are enabled
+4. Ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled in Android
 5. Connect to emulator with **adb**
    ```sh
    adb connect localhost:4444
