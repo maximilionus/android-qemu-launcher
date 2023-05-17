@@ -36,12 +36,13 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 > - [android-tools](https://developer.android.com/tools/releases/platform-tools)
 
 
-1. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation.
-2. Rename the downloaded file to `houdini9_y.sfs` and place it in `./patches/`
-3. Start the Android emulator with [main run script](./vm-run.sh)
-4. Inside emulator, go to **Settings App -> Android x86 Options** and switch on the **Enable native bridge**
-5. Ensure that **Developer mode** with **USB Debugging** are enabled
-6. Connect to emulator with **adb**
+1. [Download](https://github.com/maximilionus/android-x86_64-qemu-hwaccel/raw/files/x86_64-arm-bridge/android-9.0/houdini9_y.sfs) *([mirror](http://dl.android-x86.org/houdini/9_y/houdini.sfs))* the **x86_64 -> ARM** translation and place it in `./patches/` directory
+   > **Note**  
+   > If the file was downloaded from a *mirror*, rename it to `houdini9_y.sfs`
+2. Start the Android emulator with [main run script](./vm-run.sh)
+3. Inside emulator, go to **Settings App -> Android x86 Options** and switch on the **Enable native bridge**
+4. Ensure that **Developer mode** with **USB Debugging** are enabled
+5. Connect to emulator with **adb**
    ```sh
    adb connect localhost:4444
    ```
@@ -49,7 +50,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    ```Log
    connected to localhost:4444
    ```
-7. Use **adb** to push the translation file to device
+6. Use **adb** to push the translation file to device
    ```sh
    adb push ./patches/houdini9_y.sfs /sdcard/arm/
    ```
@@ -57,21 +58,21 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    ```Log
    ./patches/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
    ```
-8. Connect to device shell and request SU
+7. Connect to device shell and request SU
    ```sh
    adb shell
    ```
    ```sh
    su
    ```
-9. Execute the built-in script to patch the `/system/`
+8. Execute the built-in script to patch the `/system/`
    ```sh
    enable_nativebridge
    ```
    > **Note**  
    > Script does not provide any echo output, which means that after it completes and does not return an error code is a success
 
-10. That's it, now reboot the emulator and you're ready to go
+9.  That's it, now reboot the emulator and you're ready to go
     ```sh
     reboot -f
     ```
