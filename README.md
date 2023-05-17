@@ -1,11 +1,14 @@
-# Qemu: Android x86_64 9: GPU
-Everything you need, to run Android on Linux with hardware acceleration.
+# Android in Qemu on GPU
+## About
+Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceleration and ARM translation.
+
 
 ## Steps
-### Prepare
-- Qemu (🫠)
+### Requirements
+- Qemu
 - [Virtio](https://www.linux-kvm.org/page/Virtio) paravirtualized drivers *(Probably are already installed with qemu)*
-- [android-tools](https://developer.android.com/tools/releases/platform-tools)
+- *(Optional. For [ARM support](#optional-arm-support))* [android-tools](https://developer.android.com/tools/releases/platform-tools)
+
 
 ### Main
 1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`
@@ -14,7 +17,7 @@ Everything you need, to run Android on Linux with hardware acceleration.
    > Edit the `20G` max. size to your preferring. The disk is allocated dynamically, so it occupies the allowed space only when needed.
 3. Launch the [installer script](./vm-install.sh) and procceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with GPT layout
 
-   *Example*
+   Example
    ```
    Number Start    End      Sectors  Size   Code   Name
    1       2048   1050623   1048576   512M  0700      EFI
@@ -25,6 +28,7 @@ Everything you need, to run Android on Linux with hardware acceleration.
    ```sh
    ./vm-run.sh
    ```
+
 
 ### (Optional) ARM Support
 > **Note**  
