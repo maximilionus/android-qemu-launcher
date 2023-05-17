@@ -1,5 +1,6 @@
 #!/bin/bash
 qemu-system-x86_64 \
+-name "Android x86_64 VM" \
 -enable-kvm \
 -M q35 \
 -m 4096 -smp 4 -cpu host \
