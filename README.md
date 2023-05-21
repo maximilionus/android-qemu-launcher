@@ -8,6 +8,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 - Qemu
 - [Virtio](https://www.linux-kvm.org/page/Virtio) paravirtualized drivers
 
+
 ### Steps
 1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`
 2. Create the new virtual drive by running the script in `./drives/create-disk`
