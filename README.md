@@ -11,14 +11,25 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 
 ### Steps
 1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`.
-2. Create the new virtual drive by running the script in `./drives/create-disk`.
+
+2. Create the new virtual drive by running the script in `./drives/create-disk.sh`.
    > **Note**  
    > Edit the `20G` max. size to your preferring. The disk is allocated dynamically, so it occupies the allowed space only when needed.
-3. Launch the [installer script](./vm-install.sh) and procceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR layout.
+
+3. Launch the [main script](./vm.sh) in **install** mode and procceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR layout:
+   ```sh
+   ./vm.sh install
+   ```
+
 4. Shut down the virtual machine after the installer reports a successful installation.
+
 5. That's it. From now on you can run the main launch script to start the VM:
    ```sh
-   ./vm-run.sh
+   ./vm.sh
+
+   # or
+
+   ./vm.sh run
    ```
 
 
@@ -33,7 +44,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 
 
 #### Automatic
-1. Start the Android emulator with [main run script](./vm-run.sh).
+1. Start the Android emulator with [main script](./vm.sh).
 2. Inside emulator, go to **Settings App -> Android x86 Options**, switch on the **Enable native bridge** and wait before automatic download+install finish (Check notifications for result).
 3. Try launching the ARM app. If everything works fine - congratulations! If not - proceed to the [guide below](#extra).
 
