@@ -10,20 +10,32 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 
 
 ### Steps
-1. Download the Android x86_64 iso by [this link](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) and place it in `./images/`.
-
-2. Create the new virtual drive by running the script in `./drives/create-disk.sh`.
+1. Run the [main script](./vm.sh) with argument `init` to prepare file structure and drives for VM:
    > **Note**  
-   > Edit the `20G` max. size to your preferring. The disk is allocated dynamically, so it occupies the allowed space only when needed.
+   > Be ready to provide the user input to prompts.
 
-3. Launch the [main script](./vm.sh) in **install** mode and procceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR layout:
+   ```sh
+   ./vm.sh init
+   ```
+
+   Output:
+   ```sh
+   Directories initialized.
+   Enter VM drive size (default: 20G): [USER-INPUT]
+   Formatting './drives/android-x86.qcow2.img', [...]
+   Everything is done [...]
+   ```
+
+2. [Download](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) the Android x86_64 image and follow the instructions from the previous command output.
+
+3. Run the [main script](./vm.sh) in **install** mode and proceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR layout:
    ```sh
    ./vm.sh install
    ```
 
 4. Shut down the virtual machine after the installer reports a successful installation.
 
-5. That's it. From now on you can run the main launch script to start the VM:
+5. That's it. From now on, you can run the main launch script to start the VM:
    ```sh
    ./vm.sh
 
@@ -53,9 +65,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 > **Note**  
 > Below are instructions for those who have not been able to get the arm translator to work in auto-setup mode.
 
-1. [Download](https://github.com/maximilionus/android-x86_64-qemu-hwaccel/raw/files/x86_64-arm-bridge/android-9.0/houdini9_y.sfs) *([mirror](http://dl.android-x86.org/houdini/9_y/houdini.sfs))* the **x86_64 -> ARM** translation and place it in `./patches/` directory.
-   > **Note**  
-   > If the file was downloaded from a *mirror*, rename it to `houdini9_y.sfs`
+1. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation and place it in somewhere you know. Rename the downloaded file from `houdini.sfs` to `houdini9_y.sfs` and replace the `<DOWNLOAD_DIR>` in guide below with real path.
 
 2. Ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled in Android.
 
@@ -70,11 +80,11 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 
 4. Use **adb** to push the translation file to device:
    ```sh
-   adb push ./patches/houdini9_y.sfs /sdcard/arm/
+   adb push <DOWNLOAD_DIR>/houdini9_y.sfs /sdcard/arm/
    ```
    *Output:*
    ```Log
-   ./patches/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
+   <DOWNLOAD_DIR>/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
    ```
 
 5. Connect to device shell and request **SU**:
@@ -92,7 +102,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    > **Note**  
    > Script does not provide any echo output, which means that after it completes and does not return an error code is a success
 
-7. That's it, now reboot the emulator and you're ready to go:
+7. That's it, now reboot the emulator, and you're ready to go:
     ```sh
     reboot -f
     ```
