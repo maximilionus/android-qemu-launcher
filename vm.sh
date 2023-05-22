@@ -38,7 +38,7 @@ elif [ "$1" = "init" ]; then
     mkdir "./drives" "./images"
     echo "Directories initialized."
     read -p "Enter VM drive size (default: 20G): " qemu_drive_size
-    qemu_drive_size="${size:-20G}"
+    qemu_drive_size="${qemu_drive_size:-20G}"
     qemu-img create -f qcow2 ./drives/android-x86.qcow2.img $qemu_drive_size
     echo -e "\nEverything is done. Now you should download the Android x86_64 image"
     echo "and place it in the \"./images\". Now launch this scipt with"
