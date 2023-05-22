@@ -51,10 +51,6 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 > For this method to work, you should install your system in **read/write** mode. You're basically asked to do so on the installer, right after formatting the drive.
 
 
-#### Requirements
-- [android-tools](https://developer.android.com/tools/releases/platform-tools)
-
-
 #### Automatic
 1. Start the Android emulator with [main script](./vm.sh).
 2. Inside emulator, go to **Settings App -> Android x86 Options**, switch on the **Enable native bridge** and wait before automatic download+install finish (Check notifications for result).
@@ -65,11 +61,16 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 > **Note**  
 > Below are instructions for those who have not been able to get the arm translator to work in auto-setup mode.
 
-1. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation and place it in somewhere you know. Rename the downloaded file from `houdini.sfs` to `houdini9_y.sfs` and replace the `<DOWNLOAD_DIR>` in guide below with real path.
+1. Install the requirements:
+   - [android-tools](https://developer.android.com/tools/releases/platform-tools)
 
-2. Ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled in Android.
+2. [Download](http://dl.android-x86.org/houdini/9_y/houdini.sfs) the **x86_64 -> ARM** translation and put it somewhere you know. Rename the downloaded file from `houdini.sfs` to `houdini9_y.sfs`. 
+   > **Note**  
+   > Replace the `<DOWNLOAD_DIR>` with real path in steps below.
 
-3. Connect to emulator with **adb**:
+3. Ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled in Android.
+
+4. Connect to emulator with **adb**:
    ```sh
    adb connect localhost:4444
    ```
@@ -78,7 +79,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    connected to localhost:4444
    ```
 
-4. Use **adb** to push the translation file to device:
+5. Use **adb** to push the translation file to device:
    ```sh
    adb push <DOWNLOAD_DIR>/houdini9_y.sfs /sdcard/arm/
    ```
@@ -87,7 +88,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    <DOWNLOAD_DIR>/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
    ```
 
-5. Connect to device shell and request **SU**:
+6. Connect to device shell and request **SU**:
    ```sh
    adb shell
    ```
@@ -95,14 +96,14 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
    su
    ```
 
-6.  Execute the built-in script to patch the `/system/`:
+7.  Execute the built-in script to patch the `/system/`:
    ```sh
    enable_nativebridge
    ```
    > **Note**  
    > Script does not provide any echo output, which means that after it completes and does not return an error code is a success
 
-7. That's it, now reboot the emulator, and you're ready to go:
+8. That's it, now reboot the emulator, and you're ready to go:
     ```sh
     reboot -f
     ```
