@@ -41,8 +41,8 @@ elif [ "$1" = "init" ]; then
     qemu_drive_size="${qemu_drive_size:-20G}"
     qemu-img create -f qcow2 ./drives/android-x86.qcow2.img $qemu_drive_size
     echo -e "\nEverything is done. Now you should download the Android x86_64 image"
-    echo "and place it in the \"./images\". Now launch this scipt with"
-    echo "\"install\" argument to start the VM install process."
+    echo "and place it in the \"./images\". Next launch this scipt with"
+    echo "\"install\" argument to start the VM installation process."
     echo
     echo "Link to Android x86_64 9:"
     echo "  https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download"
