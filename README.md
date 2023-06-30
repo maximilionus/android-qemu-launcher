@@ -28,7 +28,7 @@ Manuals and scripts to run **Android x86_64 9.0** on Linux with hardware acceler
 
 2. [Download](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download) the Android x86_64 image and follow the instructions from the previous command output.
 
-3. Run the [main script](./vm.sh) in **install** mode and proceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR layout:
+3. Run the [main script](./vm.sh) in **install** mode and proceed with [basic Android x86_64 installation](https://www.android-x86.org/installhowto.html) with MBR drive layout and GRUB bootloader:
    ```sh
    ./vm.sh install
    ```
