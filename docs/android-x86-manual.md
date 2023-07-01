@@ -1,9 +1,15 @@
 # About
-This ROM is originally what this launcher started with and is therefore fully supported. However, after installation you need to do some tweaking if you want to get the full Android VM feature set - for example ARM support.
+This ROM is originally what this launcher started with and is therefore fully supported. However, after installation you need to do some tweaking if you want to get the full Android VM feature set - for example ARM support. It is also based on the old Android 9.0, making it difficult to use for the modern tasks and overall stability for graphical tasks is quite terrible.
 
 
 # Downloads
-- [9.0-r2](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download)
+> **Warning**  
+> Only the versions from the list below have been tested with this launcher. You are free to use whatever version you want, but any kind of issues may occur.
+
+> **Note**  
+> You can find all the official releases for this ROM [here](https://www.android-x86.org/download)
+
+- `9.0-r2` (Android 9.0) - [GAPPS](https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download)
 
 
 # Install
