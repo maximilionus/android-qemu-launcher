@@ -1,5 +1,5 @@
 # About
-One of the most stable and feature-rich ROMs on modern Android. Comes with everything out of the box, even the ARM support.
+One of the most stable and feature-rich ROMs on the modern Android versions. Comes with everything out of the box, even the ARM support. Amazing stability and graphics performance.
 
 
 # Download

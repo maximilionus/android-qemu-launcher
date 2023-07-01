@@ -53,9 +53,10 @@ elif [ "$1" = "init" ]; then
     qemu_drive_size="${qemu_drive_size:-20G}"
     qemu-img create -f qcow2 ./drives/$DRIVE_NAME $qemu_drive_size
     echo -e "\nEverything is done. Now you should download the desired"
-    echo "Android x86 image. Next launch his scipt with \"install\" argument"
-    echo "and provide the path to the downloaded image to start the VM"
-    echo "installation process."
+    echo "Android (x86_64 arch) image and launch this scipt with \"install\""
+    echo "argument, providing the path to the image."
+    echo "EXAMPLE:"
+    echo "  ./launcher.sh install ~/Downloads/downloaded-android-image.iso"
     exit 0
 elif [ "$1" = "help" ]; then
     echo "Usage: ./launcher.sh [COMMAND]"
@@ -64,7 +65,7 @@ elif [ "$1" = "help" ]; then
     echo "  run             : (Default) Run the Virtual Machine in normal mode."
     echo "  init            : Prepare everything for VM, initialize drives."
     echo "  install <IMAGE> : Run the Virtual Machine in installation mode with"
-    echo "                    <IMAGE> path to"
+    echo "                    <IMAGE> path to the Android image to be installed"
     echo "  help            : Show this help message."
     echo
     echo "NOTES:"
