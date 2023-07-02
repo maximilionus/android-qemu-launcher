@@ -10,7 +10,7 @@ values=(
     "-m" "$RAM_SIZE"
     "-smp" "$CPU_CORES"
     "-cpu" "host"
-    "-drive" "file=$DRIVE_NAME,if=virtio"
+    "-drive" "file=$DRIVE_PATH,if=virtio"
     "-usb"
     "-device" "virtio-tablet"
     "-device" "virtio-keyboard"
