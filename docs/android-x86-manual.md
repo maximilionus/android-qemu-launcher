@@ -23,7 +23,7 @@ Installation is quite easy, just follow the [basic guide](../README.md#install).
 
 
 ### Automatic
-1. Start the Android emulator with [main script](./launcher.sh).
+1. Start the Android emulator with [main script](../launcher.sh).
 2. Inside emulator, go to **Settings App -> Android x86 Options**, switch on the **Enable native bridge** and wait before automatic download+install finish (Check notifications for result).
 3. Try launching the ARM app. If everything works fine - congratulations! If not - proceed to the [guide below](#extra).
 
