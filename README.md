@@ -25,9 +25,9 @@ This list contains the names of Android images that are officially supported and
    ```sh
    git clone https://github.com/maximilionus/android-qemu-launcher.git
    ```
-2. Download the desired Android image.
-3. Run the [main script](./launcher.sh) with argument `init` to prepare file structure and drives for VM:
-   > **Note**  
+2. Download the desired Android image, but prefer the [officially supported](#supported-rom) one.
+3. Run the [launcher](./launcher.sh) with argument `init` to prepare the file structure and drives for VM:
+   > **Warning**  
    > Be ready to provide the user input.
 
    ```sh
@@ -42,14 +42,17 @@ This list contains the names of Android images that are officially supported and
    Everything is done [...]
    ```
 
-4. Run the [main script](./launcher.sh) with **install** argument and proceed with basic Android installation with MBR *(Not GPT!)* drive layout and GRUB bootloader enabled:
+4. Run the [launcher](./launcher.sh) with **install** argument and the path to the Android image from step 2 next to it and proceed with basic Android installation on MBR *(Not GPT!)* drive layout and GRUB bootloader enabled:
    ```sh
-   ./launcher.sh install
+   ./launcher.sh install <PATH_TO_ROM>
+
+   # Example
+   ./launcher.sh install ~/Downloads/android-x86-rom.iso
    ```
 
 5. Shut down the virtual machine after the installer reports a successful installation, do not reboot it.
 
-6. That's it. From now on, you can run the main launch script to start the VM:
+6. That's it. From now on, you can run the [launcher](./launcher.sh) to start the VM:
    ```sh
    ./launcher.sh
 
