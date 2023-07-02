@@ -10,7 +10,7 @@ values=(
     "-m" "$RAM_SIZE"
     "-smp" "$CPU_CORES"
     "-cpu" "host"
-    "-drive" "file=./drives/$DRIVE_NAME,if=virtio"
+    "-drive" "file=$DRIVE_NAME,if=virtio"
     "-usb"
     "-device" "virtio-tablet"
     "-device" "virtio-keyboard"
@@ -47,11 +47,11 @@ elif [ "$1" = "install" ]; then
     echo "NOTE: Be sure to select the MBR (Not GPT) layout for the drive with"
     echo "      ext4 formatting and GRUB bootloader enabled."
 elif [ "$1" = "init" ]; then
-    mkdir -v "./drives"
+    mkdir -p -v $(dirname "$DRIVE_PATH")
     echo "Directories initialized."
-    read -p "Enter VM drive size (default: 20G): " qemu_drive_size
-    qemu_drive_size="${qemu_drive_size:-20G}"
-    qemu-img create -f qcow2 ./drives/$DRIVE_NAME $qemu_drive_size
+    read -p "Enter VM drive size (default: 20G): " _qemu_drive_size
+    _qemu_drive_size="${_qemu_drive_size:-20G}"
+    qemu-img create -f qcow2 "$DRIVE_PATH" $_qemu_drive_size
     echo -e "\nEverything is done. Now you should download the desired"
     echo "Android (x86_64 arch) image and launch this scipt with \"install\""
     echo "argument, providing the path to the image."
