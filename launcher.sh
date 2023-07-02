@@ -24,7 +24,7 @@ values=(
 
 if ([ $# -eq 0 ] || [ "$1" = "run" ]); then
     values+=(
-        "-name" "\"Android VM\""
+        "-name" "$WINDOW_TITLE"
         "-audiodev" "pa,id=snd0"
         "-device" "AC97,audiodev=snd0"
     )
@@ -36,7 +36,7 @@ elif [ "$1" = "install" ]; then
     fi
 
     values+=(
-        "-name" "\"Android VM - Install\""
+        "-name" "$WINDOW_TITLE - Install"
         "-cdrom" "$2"
     )
     echo "Starting the VM in installation mode"
