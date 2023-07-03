@@ -17,10 +17,11 @@ This list contains the names of Android images that are officially supported and
 
 ### Steps
 > **Note**  
-> If your ROM is in the officially supported by this launcher list, then be sure to read the manuals in [docs](./docs/) directory.
+> If your ROM is [officially supported](#supported-rom) by this launcher, then be sure to read the manuals in the [docs](./docs/) directory.
+
 1. Clone this repository
    > **Note**  
-   > Yes, you can simply download this repo, but using git is more preferred way if you want get all the new updates from the upstream.
+   > Yes, you can simply download this repo, but using git is the preferred way if you want to get all the new updates from the upstream.
 
    ```sh
    git clone https://github.com/maximilionus/android-qemu-launcher.git
@@ -28,7 +29,7 @@ This list contains the names of Android images that are officially supported and
 2. Download the desired Android image, but prefer the [officially supported](#supported-rom) one.
 3. Run the [launcher](./launcher.sh) with argument `init` to prepare the file structure and drives for VM:
    > **Warning**  
-   > Be ready to provide the user input.
+   > Be ready to provide user input.
 
    ```sh
    ./launcher.sh init
@@ -42,7 +43,7 @@ This list contains the names of Android images that are officially supported and
    Everything is done [...]
    ```
 
-4. Run the [launcher](./launcher.sh) with **install** argument and the path to the Android image from step 2 next to it and proceed with basic Android installation on MBR *(Not GPT!)* drive layout and GRUB bootloader enabled:
+4. Run the [launcher](./launcher.sh) with the **install** argument and the path to the Android image from step 2 next to it and proceed with basic Android installation on MBR *(Not GPT!)* drive layout and GRUB bootloader enabled:
    ```sh
    ./launcher.sh install <PATH_TO_ROM>
 
@@ -71,10 +72,10 @@ git pull
 
 ## Configuration
 ### Default
-The default configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable variables with the corresponding description and default values. Every value in this file can be changed or even deleted at any point of the development, so you should prefer using the user configuration file to make any tweaks.
+The default configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable variables with their corresponding descriptions and default values. Every value in this file can be changed or even deleted at any point in the development process, so you should prefer using the user configuration file to make any tweaks.
 
 ### User
-This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified variables from the [default config](#default).
+This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified variables from the [default configuration](#default).
 
 > **Exapmle**  
 > 1. Create the `vm.user.conf` in the root of this project.
@@ -86,4 +87,4 @@ This configuration file must be created manually by the user and placed in the r
 > 3. Now VM will be allowed to use **8 CPU** cores and **8GB of RAM** on each start.
 
 > **Note**  
-> You can also modify the path to user configuration file by chaning the `CUSTOM_CONFIG_PATH` variable value in the [default config](#default).
+> You can also modify the path to the user configuration file by changing the `CUSTOM_CONFIG_PATH` variable value in the [default configuration](#default).
