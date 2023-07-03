@@ -77,7 +77,7 @@ The default configuration file is located in the root of this project and is nam
 ### User
 This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified variables from the [default configuration](#default).
 
-> **Exapmle**  
+> **Example**  
 > 1. Create the `vm.user.conf` in the root of this project.
 > 2. Add modified CPU and RAM values to it. It should look something like this:
 >    ```
