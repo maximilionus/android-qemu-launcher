@@ -73,10 +73,10 @@ git pull
 ### Configuration
 
 #### Default
-The default configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable values with the corresponding description and default values. Every value in this file can be changed or even deleted at any point of the development, so you should prefer using the user configuration file to make any tweaks.
+The default configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable variables with the corresponding description and default values. Every value in this file can be changed or even deleted at any point of the development, so you should prefer using the user configuration file to make any tweaks.
 
 #### User
-This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified values from the [default config](#default).
+This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified variables from the [default config](#default).
 
 > **Exapmle**  
 > 1. Create the `vm.user.conf` in the root of this project.
