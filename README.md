@@ -88,4 +88,4 @@ This configuration file must be created manually by the user and placed in the r
 > 3. Now VM will be allowed to use **8 CPU** cores and **8GB of RAM** on each start.
 
 > **Note**  
-> You can also modify the path to user configuration file by chaning the `CUSTOM_CONFIG_PATH` variable in [`vm.conf`](./vm.conf)
+> You can also modify the path to user configuration file by chaning the `CUSTOM_CONFIG_PATH` variable value in the [default config](#default).
