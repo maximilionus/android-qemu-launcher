@@ -71,4 +71,21 @@ git pull
 
 ## Extra
 ### Configuration
-The configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable values with the corresponding description. Modify with caution, every value in this file can be changed or even deleted.
+
+#### Default
+The default configuration file is located in the root of this project and is named [`vm.conf`](./vm.conf). It contains all modifiable values with the corresponding description and default values. Every value in this file can be changed or even deleted at any point of the development, so you should prefer using the user configuration file to make any tweaks.
+
+#### User
+This configuration file must be created manually by the user and placed in the root of this project under the name `vm.user.conf`. Launcher will automatically load it on each run, overwriting the modified values from the [default config](#default).
+
+> **Exapmle**  
+> 1. Create the `vm.user.conf` in the root of this project.
+> 2. Add modified CPU and RAM values to it. It should look something like this:
+>    ```
+>    RAM_SIZE=8192
+>    CPU_CORES=8
+>    ```
+> 3. Now VM will be allowed to use **8 CPU** cores and **8GB of RAM** on each start.
+
+> **Note**  
+> You can also modify the path to user configuration file by chaning the `CUSTOM_CONFIG_PATH` variable in [`vm.conf`](./vm.conf)
