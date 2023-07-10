@@ -41,7 +41,12 @@ Installation is quite easy, just follow the [basic guide](../README.md#install).
 
 3. Ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled in Android.
 
-4. Connect to emulator with **adb**:
+4. Enable the VM adb port forwarding to the host machine by creating the [user configuration file](../README.md#user) and adding this line to it:
+   ```sh
+   ADB_ENABLE=true
+   ```
+
+5. Connect to emulator with **adb**:
    ```sh
    adb connect localhost:4444
    ```
@@ -50,7 +55,7 @@ Installation is quite easy, just follow the [basic guide](../README.md#install).
    connected to localhost:4444
    ```
 
-5. Use **adb** to push the translation file to device:
+6. Use **adb** to push the translation file to device:
    ```sh
    adb push <DOWNLOAD_DIR>/houdini9_y.sfs /sdcard/arm/
    ```
@@ -59,7 +64,7 @@ Installation is quite easy, just follow the [basic guide](../README.md#install).
    <DOWNLOAD_DIR>/houdini9_y.sfs: 1 file pushed, 0 skipped. 351.3 MB/s (42778624 bytes in 0.116s)
    ```
 
-6. Connect to device shell and request **SU**:
+7. Connect to device shell and request **SU**:
    ```sh
    adb shell
    ```
@@ -67,14 +72,14 @@ Installation is quite easy, just follow the [basic guide](../README.md#install).
    su
    ```
 
-7.  Execute the built-in script to patch the `/system/`:
+8.  Execute the built-in script to patch the `/system/`:
    ```sh
    enable_nativebridge
    ```
    > **Note**  
    > Script does not provide any echo output, which means that after it completes and does not return an error code is a success
 
-8. That's it, now reboot the emulator, and you're ready to go:
+9.  That's it, now reboot the emulator, and you're ready to go:
     ```sh
     reboot -f
     ```
