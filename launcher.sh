@@ -25,8 +25,12 @@ arguments_list=(
     "-display" "sdl,gl=on"
     "-machine" "vmport=off"
     "-net" "nic,model=virtio-net-pci"
-    "-net" "user,hostfwd=tcp::$ADB_PORT-:5555"
 )
+
+# Add config-based args
+if [ "$ADB_ENABLED" = true ] ; then
+    arguments_list+=("-net" "user,hostfwd=tcp::$ADB_PORT-:5555")
+fi
 
 # Process params
 if ([ $# -eq 0 ] || [ "$1" = "run" ]); then
