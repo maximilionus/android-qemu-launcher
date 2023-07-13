@@ -30,6 +30,8 @@ arguments_list=(
 # Add config-based args
 if [ "$ADB_ENABLE" = true ] ; then
     arguments_list+=("-net" "user,hostfwd=tcp::$ADB_PORT-:5555")
+else
+    arguments_list+=("-net" "user")
 fi
 
 # Process params
