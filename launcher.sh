@@ -9,6 +9,9 @@ if [ -f "$CUSTOM_CONFIG_PATH" ]; then
     . $CUSTOM_CONFIG_PATH
 fi
 
+# Load extra modules
+source ./modules/drive-utils.sh
+
 # Default args for qemu
 arguments_list=(
     "-enable-kvm"
@@ -35,6 +38,7 @@ else
 fi
 
 # Process params
+# TODO: Split implementation to module
 if ([ $# -eq 0 ] || [ "$1" = "run" ]); then
     # Launch the VM in default mode
     arguments_list+=(
@@ -77,6 +81,8 @@ elif [ "$1" = "init" ]; then
     echo "EXAMPLE:"
     echo "  ./launcher.sh install ~/Downloads/downloaded-android-image.iso"
     exit 0
+elif [ "$1" = "drive" ]; then
+    driveutils_cli_process_args "${@:2}"
 elif [ "$1" = "help" ]; then
     # Show help messages
     echo "Usage: ./launcher.sh [COMMAND]"
@@ -86,6 +92,7 @@ elif [ "$1" = "help" ]; then
     echo "  init            : Prepare everything for VM, initialize drives."
     echo "  install <IMAGE> : Run the Virtual Machine in installation mode with"
     echo "                    <IMAGE> path to the Android image to be installed"
+    # TODO: Add "drive" helper
     echo "  help            : Show this help message."
     echo
     echo "NOTES:"
