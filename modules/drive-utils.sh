@@ -15,7 +15,7 @@ driveutils_mount () {
 # Unmount the drive and unload the kernel modules
 driveutils_umount () {
     echo "Unmounting the drive image"
-    umount $DRIVE_MOUNT_PATH
+    umount /dev/nbd0p1
     qemu-nbd --disconnect /dev/nbd0
 
     echo "Unloading the kernel modules and removing the temp mount dir"
