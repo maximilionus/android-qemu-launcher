@@ -28,10 +28,22 @@ driveutils_umount () {
 driveutils_cli_process_args () {
     arguments_arr=("${@}")
 
-    if ([ "${arguments_arr[0]}" == "mount" ]); then
+    if ([ $# -eq 0 ] || [ "${arguments_arr[0]}" = "help" ]); then
+        echo "Usage: ./launcher.sh drive [COMMAND]"
+        echo "About: Set of utilities to manage the VM drive."
+        echo
+        echo "COMMANDS:"
+        echo "  help   : (Default) Show this help message."
+        echo "  mount  : Mount the VM drive to the path provided with"
+        echo "           'DRIVE_MOUNT_PATH' var in the configuration file."
+        echo "  umount : Unmount the VM drive and unload all modules."
+    elif ([ "${arguments_arr[0]}" == "mount" ]); then
         driveutils_mount
     elif ([ "${arguments_arr[0]}" == "umount" ]); then
         driveutils_umount
+    else
+        echo "Error: Invalid argument: \"${arguments_arr[0]}\""
+        exit 1
     fi
 
     exit 0

@@ -92,7 +92,8 @@ elif [ "$1" = "help" ]; then
     echo "  init            : Prepare everything for VM, initialize drives."
     echo "  install <IMAGE> : Run the Virtual Machine in installation mode with"
     echo "                    <IMAGE> path to the Android image to be installed"
-    # TODO: Add "drive" helper
+    echo "  drive <...>     : Set of utilities to manage the VM drive."
+    echo "                    the VM drive."
     echo "  help            : Show this help message."
     echo
     echo "NOTES:"
