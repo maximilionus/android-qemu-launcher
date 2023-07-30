@@ -2,6 +2,9 @@
 
 set -e
 
+# Change the workdir to the script location
+cd "$(dirname "$0")"
+
 # Load the configuration files
 . ./vm.conf
 
