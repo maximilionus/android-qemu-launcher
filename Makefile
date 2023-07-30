@@ -1,7 +1,7 @@
 APP_NAME := Android Qemu VM
 ENTRY_NAME := com.maximilionus.AndroidQemuVM
 SCRIPT_NAME := launcher.sh
-ICON_PATH := data/app_logo.svg
+ICON_PATH := data/icons/desktop_icon.svg
 DEST_DIR := $(HOME)/.local/share/applications
 
 install:
