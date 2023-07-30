@@ -7,6 +7,7 @@ driveutils_mount () {
     echo "[ Mounting the disk image ]"
     qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH
     mkdir -v -p "$DRIVE_MOUNT_PATH"
+    sleep 5;
     mount /dev/nbd0p1 $DRIVE_MOUNT_PATH
 
     echo "[ Drive was successfully mounted to the '$(realpath $DRIVE_MOUNT_PATH)' directory ]"
