@@ -3,6 +3,7 @@ ENTRY_NAME := android-qemu-launcher
 SCRIPT_NAME := launcher.sh
 ICON_PATH := data/icons/desktop_icon.svg
 DEST_DIR := $(HOME)/.local/share/applications
+.DEFAULT_GOAL := help
 
 install:
 	@echo "[Desktop Entry]" > $(DEST_DIR)/$(ENTRY_NAME).desktop
@@ -18,3 +19,11 @@ uninstall:
 	rm -f $(DEST_DIR)/$(ENTRY_NAME).desktop
 
 	@echo "Desktop entry removed successfully."
+
+help:
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "Targets:"
+	@echo "  install       Install the desktop entry."
+	@echo "  uninstall     Remove the desktop entry."
+	@echo "  help          Display this help message."
