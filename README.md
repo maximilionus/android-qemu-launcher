@@ -89,3 +89,22 @@ This configuration file must be created manually by the user and placed in the r
 
 > **Note**  
 > You can also modify the path to the user configuration file by changing the `CUSTOM_CONFIG_PATH` variable value in the [default configuration](#default).
+
+
+## Desktop Entry
+This project provides a convenient way to manage the desktop entry for the [launcher](./launcher.sh), making it easier to access from your desktop environment.
+
+### Prerequisites
+- A desktop environment that supports `.desktop` entries *(e.g., GNOME, KDE, Xfce, etc.)*.
+- `GNU Make` utility installed on your system.
+
+### Usage
+- To create the desktop entry:
+  ```bash
+  make install
+  ```
+
+- To remove the desktop entry:
+  ```bash
+  make uninstall
+  ```
