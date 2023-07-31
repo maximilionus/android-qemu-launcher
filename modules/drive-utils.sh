@@ -1,14 +1,66 @@
+__driveutils_load_modules () {
+    echo "[ Loading the kernel modules ]"
+    modprobe -v nbd max_part=8
+}
+
+__driveutils_unload_modules () {
+    echo "[ Unloading the kernel modules ]"
+    rmmod -v nbd
+}
+
+__driveutils_nbd_connect () {
+    echo "[ Connecting the drive to NBD ]"
+    qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH
+}
+
+__driveutils_nbd_disconnect () {
+    echo "[ Disconnecting the drive from NBD ]"
+    qemu-nbd --disconnect /dev/nbd0
+}
+
+__driveutils_nbd_mount () {
+    echo "[ Mounting the drive image to the '$(realpath $DRIVE_MOUNT_PATH)' directory]"
+    mount /dev/nbd0p1 "$DRIVE_MOUNT_PATH"
+}
+
+__driveutils_nbd_umount () {
+    echo "[ Unmounting the drive image from the '$(realpath $DRIVE_MOUNT_PATH)' directory]"
+    umount -v "$DRIVE_MOUNT_PATH"
+}
+
+__driveutils_mountdir_create () {
+    echo "[ Creating the mount dir ]"
+    mkdir -v -p "$DRIVE_MOUNT_PATH"
+}
+
+__driveutils_mountdir_delete () {
+    echo "[ Removing the mount dir ]"
+    rm -rfv "$DRIVE_MOUNT_PATH"
+}
+
+
 # Load kernel modules and mount the drive to a local folder inside the root
 # of current project
 driveutils_mount () {
-    echo "[ Loading the kernel modules ]"
-    modprobe -v nbd max_part=8
+    mount_tries=1
+    __driveutils_load_modules
+    #__driveutils_nbd_connect
+    __driveutils_mountdir_create
 
-    echo "[ Mounting the disk image ]"
-    qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH
-    mkdir -v -p "$DRIVE_MOUNT_PATH"
-    until mount /dev/nbd0p1 "$DRIVE_MOUNT_PATH"; do 
-        echo "Attempting to mount the drive"
+    until __driveutils_nbd_mount; do
+        echo "Attempting to mount the drive. Attempt: $mount_tries"
+
+        if ((mount_tries >= 5)); then
+            echo "[ Can not mount the drive. Shutting down. ]"
+            set +e
+            __driveutils_nbd_umount
+            __driveutils_nbd_disconnect
+            __driveutils_unload_modules
+            __driveutils_mountdir_delete
+            exit 1
+        fi
+
+        ((mount_tries++))
         sleep 2
     done
 
@@ -17,14 +69,10 @@ driveutils_mount () {
 
 # Unmount the drive and unload the kernel modules
 driveutils_umount () {
-    echo "[ Unmounting the drive image ]"
-    umount -v /dev/nbd0p1
-    qemu-nbd --disconnect /dev/nbd0
-
-    echo "[ Unloading the kernel modules and removing the temp mount dir ]"
-    rmmod -v nbd
-    rm -rfv "$DRIVE_MOUNT_PATH"
-    echo "[ Drive was successfully unmounted from the '$(realpath $DRIVE_MOUNT_PATH)' directory ]"
+    __driveutils_nbd_umount
+    __driveutils_nbd_disconnect
+    __driveutils_unload_modules
+    __driveutils_mountdir_delete
 }
 
 # Process the CLI args
