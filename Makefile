@@ -16,7 +16,7 @@ install:
 	@echo "Desktop entry created successfully."
 
 uninstall:
-	rm -f $(DEST_DIR)/$(ENTRY_NAME).desktop
+	@rm -f $(DEST_DIR)/$(ENTRY_NAME).desktop
 
 	@echo "Desktop entry removed successfully."
 
