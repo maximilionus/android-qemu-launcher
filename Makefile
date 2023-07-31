@@ -11,7 +11,7 @@ install:
 	@echo "Exec=$(realpath $(SCRIPT_NAME))" >> $(DEST_DIR)/$(ENTRY_NAME).desktop
 	@echo "Icon=$(realpath $(ICON_PATH))" >> $(DEST_DIR)/$(ENTRY_NAME).desktop
 	@echo "Type=Application" >> $(DEST_DIR)/$(ENTRY_NAME).desktop
-	@echo "Categories=Utility;" >> $(DEST_DIR)/$(ENTRY_NAME).desktop
+	@echo "Categories=Graphics;" >> $(DEST_DIR)/$(ENTRY_NAME).desktop
 
 	@echo "Desktop entry created successfully."
 
