@@ -1,5 +1,5 @@
-APP_NAME := Android Qemu VM
-ENTRY_NAME := com.maximilionus.AndroidQemuVM
+APP_NAME := Android Qemu Launcher
+ENTRY_NAME := android-qemu-launcher
 SCRIPT_NAME := launcher.sh
 ICON_PATH := data/icons/desktop_icon.svg
 DEST_DIR := $(HOME)/.local/share/applications
