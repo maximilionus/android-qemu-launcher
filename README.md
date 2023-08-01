@@ -122,4 +122,4 @@ Virtual Machine can also be accessed with `adb` from the host machine, but this 
    ```sh
    adb connect localhost:4444
    ```
-   If you are connecting for the first time, you will be prompted to allow debugging in the VM. Allow the connection and run the command from the previous step again.
+   If you are connecting for the first time, you will be prompted to allow debugging in the VM. Allow the connection and run the command above again.
