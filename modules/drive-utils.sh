@@ -1,3 +1,6 @@
+# Drive image (qcow2) managing utilities
+
+
 __driveutils_load_modules () {
     echo "[ Loading the kernel modules ]"
     modprobe -v nbd max_part=8
@@ -62,6 +65,8 @@ __driveutils_mountdir_delete () {
 # Load kernel modules and mount the drive to a local folder inside the root
 # of current project
 driveutils_mount () {
+    require_root
+
     __driveutils_load_modules
     __driveutils_nbd_connect
     __driveutils_mountdir_create
@@ -70,6 +75,8 @@ driveutils_mount () {
 
 # Unmount the drive and unload the kernel modules
 driveutils_umount () {
+    require_root
+
     __driveutils_nbd_umount
     __driveutils_nbd_disconnect
     __driveutils_unload_modules
@@ -89,6 +96,10 @@ driveutils_cli_process_args () {
         echo "  mount  : Mount the VM drive to the path provided with"
         echo "           'DRIVE_MOUNT_PATH' var in the configuration file."
         echo "  umount : Unmount the VM drive and unload all modules."
+        echo ""
+        echo "NOTES:"
+        echo "  The \"mount\" and \"umount\" commands require root privileges"
+        echo "  to execute."
     elif ([ "${arguments_arr[0]}" == "mount" ]); then
         driveutils_mount
     elif ([ "${arguments_arr[0]}" == "umount" ]); then

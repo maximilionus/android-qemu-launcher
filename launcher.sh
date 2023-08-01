@@ -9,7 +9,8 @@ if [ -f "$CUSTOM_CONFIG_PATH" ]; then
     . $CUSTOM_CONFIG_PATH
 fi
 
-# Load extra modules
+# Load modules
+source ./modules/core.sh
 source ./modules/drive-utils.sh
 
 # Default args for qemu
