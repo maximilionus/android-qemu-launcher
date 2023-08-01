@@ -20,12 +20,32 @@ __driveutils_nbd_disconnect () {
 
 __driveutils_nbd_mount () {
     echo "[ Mounting the drive image to the '$(realpath $DRIVE_MOUNT_PATH)' directory]"
-    mount /dev/nbd0p1 "$DRIVE_MOUNT_PATH"
+
+    mount_tries=1
+    until mount /dev/nbd0p1 "$DRIVE_MOUNT_PATH"; do
+        echo "- Attempting to mount the drive. Attempt: $mount_tries"
+
+        if ((mount_tries >= 5)); then
+            echo "[ Can not mount the drive. Shutting down. ]"
+            set +e
+            __driveutils_nbd_umount
+            __driveutils_nbd_disconnect
+            __driveutils_unload_modules
+            __driveutils_mountdir_delete
+            exit 1
+        fi
+
+        ((mount_tries++))
+        sleep 2
+    done
+
+    echo "[ Drive was successfully mounted ]"
 }
 
 __driveutils_nbd_umount () {
     echo "[ Unmounting the drive image from the '$(realpath $DRIVE_MOUNT_PATH)' directory]"
     umount -v "$DRIVE_MOUNT_PATH"
+    echo "[ Drive was successfully unmounted ]"
 }
 
 __driveutils_mountdir_create () {
@@ -42,29 +62,10 @@ __driveutils_mountdir_delete () {
 # Load kernel modules and mount the drive to a local folder inside the root
 # of current project
 driveutils_mount () {
-    mount_tries=1
     __driveutils_load_modules
     __driveutils_nbd_connect
     __driveutils_mountdir_create
-
-    until __driveutils_nbd_mount; do
-        echo "Attempting to mount the drive. Attempt: $mount_tries"
-
-        if ((mount_tries >= 5)); then
-            echo "[ Can not mount the drive. Shutting down. ]"
-            set +e
-            __driveutils_nbd_umount
-            __driveutils_nbd_disconnect
-            __driveutils_unload_modules
-            __driveutils_mountdir_delete
-            exit 1
-        fi
-
-        ((mount_tries++))
-        sleep 2
-    done
-
-    echo "[ Drive was successfully mounted to the '$(realpath $DRIVE_MOUNT_PATH)' directory ]"
+    __driveutils_nbd_mount
 }
 
 # Unmount the drive and unload the kernel modules
