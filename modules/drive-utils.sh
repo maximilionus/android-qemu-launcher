@@ -44,7 +44,7 @@ __driveutils_mountdir_delete () {
 driveutils_mount () {
     mount_tries=1
     __driveutils_load_modules
-    #__driveutils_nbd_connect
+    __driveutils_nbd_connect
     __driveutils_mountdir_create
 
     until __driveutils_nbd_mount; do
