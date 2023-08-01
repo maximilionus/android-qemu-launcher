@@ -24,6 +24,6 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  install       Install the desktop entry."
+	@echo "  install       Create the desktop entry."
 	@echo "  uninstall     Remove the desktop entry."
 	@echo "  help          Display this help message."
