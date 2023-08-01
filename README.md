@@ -108,3 +108,18 @@ This project provides a convenient way to manage the desktop entry for the [laun
   ```bash
   make uninstall
   ```
+
+
+## Android Debug Bridge (adb)
+Virtual Machine can also be accessed with `adb` from the host machine, but this feature is disabled by default in [configuration file](./vm.conf). To enable it, follow the steps below.
+
+1. Create the [user configuration file](#user).
+2. Add the `ADB_ENABLE=true` variable to it.
+   > **Note**  
+   > You can also change the port forwarding by adding the `ADB_PORT=VALUE`.
+3. Launch the VM and ensure that [**Developer mode**](https://developer.android.com/studio/debug/dev-options#enable) with [**USB Debugging**](https://developer.android.com/studio/debug/dev-options#Enable-debugging) are enabled.
+4. Now you can connect to the VM with `adb` by executing the command below:
+   ```sh
+   adb connect localhost:4444
+   ```
+   If you are connecting for the first time, you will be prompted to allow debugging in the VM. Allow the connection and run the command from the previous step again.
