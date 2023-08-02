@@ -9,8 +9,10 @@ One of the most stable and feature-rich ROMs on the modern Android versions. Com
 > **Note**  
 > You can find all the official releases for this ROM [here](https://blissos.org/)
 
-- `15.8.6` (Android 12L) - [GAPPS](https://sourceforge.net/projects/blissos-dev/files/Beta/Bliss-v15.8.6-x86_64-OFFICIAL-gapps-20230625.iso/download) : [Vanilla](https://sourceforge.net/projects/blissos-dev/files/Beta/Bliss-v15.8.6-x86_64-OFFICIAL-vanilla-20230628.iso/download)
+- `14.10` (Android 11)
+- `15.8.6` (Android 12L)
 
 
 # Install
-No additional installation steps required, just follow the [basic guide](../README.md#install).
+1. Follow the [basic guide](../README.md#install) to install the OS.
+2. Each VM startup, in GRUB, you should select the `BlissOS-XX.XX YYYY-MM-DD QEMO/KVM` boot entry. This will improve graphics performance and overall VM stability. It will also allow you to change the screen resolution using the `video=WxH` kernel parameter.
