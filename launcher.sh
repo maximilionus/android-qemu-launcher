@@ -48,8 +48,7 @@ if ([ $# -eq 0 ] || [ "$1" = "run" ]); then
     # Launch the VM in default mode
     arguments_list+=(
         "-name" "$WINDOW_TITLE"
-        "-audiodev" "pa,id=snd0"
-        "-device" "AC97,audiodev=snd0"
+        "-audio" "pa,model=hda"
     )
     echo "Starting the VM in normal mode"
 elif [ "$1" = "install" ]; then
