@@ -87,6 +87,10 @@ elif [ "$1" = "init" ]; then
     exit 0
 elif [ "$1" = "drive" ]; then
     driveutils_cli_process_args "${@:2}"
+elif [ "$1" = "d_args" ]; then
+    echo "Composed arguments array:"
+    echo "${arguments_list[@]}"
+    exit 0
 elif [ "$1" = "help" ]; then
     # Show help messages
     echo "Usage: ./launcher.sh [COMMAND]"
@@ -99,6 +103,9 @@ elif [ "$1" = "help" ]; then
     echo "                    installed."
     echo "  drive <CMD>     : Set of utilities to manage the VM drive."
     echo "  help            : Show this help message."
+    echo
+    echo "DEBUG COMMANDS:"
+    echo "  d_args          : Print the composed array of arguments and exit."
     echo
     echo "NOTES:"
     echo "  \"(Default)\" argument will be selected automatically, if no arguments"
