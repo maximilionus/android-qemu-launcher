@@ -12,7 +12,7 @@ This list contains the names of Android images that are officially supported and
 ## Install
 ### Requirements
 - Qemu
-- [Virtio](https://www.linux-kvm.org/page/Virtio) drivers
+- [Virtio](https://www.linux-kvm.org/page/Virtio) drivers (Installed as a Qemu dependency in most package managers by default)
 
 
 ### Steps
