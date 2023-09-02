@@ -3,32 +3,85 @@
 
 __driveutils_load_modules () {
     echo "[ Loading the kernel modules ]"
-    modprobe -v nbd max_part=8
+
+    tries=1
+    max_tries=5
+    until modprobe -v nbd max_part=8; do
+        if ((tries >= max_tries)); then
+            echo "[ Can load the kernel modules. Shutting down. ]"
+            exit 1
+        fi
+
+        ((tries++))
+
+        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
+        sleep 3
+    done
 }
 
 __driveutils_unload_modules () {
     echo "[ Unloading the kernel modules ]"
-    rmmod -v nbd
+
+    tries=1
+    max_tries=5
+    until rmmod -v nbd; do
+        if ((tries >= max_tries)); then
+            echo "[ Can not unload the kernel modules. Shutting down. ]"
+            exit 1
+        fi
+
+        ((tries++))
+
+        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
+        sleep 3
+    done
 }
 
 __driveutils_nbd_connect () {
     echo "[ Connecting the drive to NBD ]"
-    qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH
+
+    tries=1
+    max_tries=5
+    until qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH; do
+        if ((tries >= max_tries)); then
+            echo "[ Can not connect the drive to NBD server. Shutting down. ]"
+            exit 1
+        fi
+
+        ((tries++))
+
+        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
+        sleep 3
+    done
 }
 
 __driveutils_nbd_disconnect () {
     echo "[ Disconnecting the drive from NBD ]"
-    qemu-nbd --disconnect /dev/nbd0
+
+    tries=1
+    max_tries=5
+    until qemu-nbd --disconnect /dev/nbd0; do
+        if ((tries >= max_tries)); then
+            echo "[ Can not disconnect the drive from NBD server. Shutting down. ]"
+            exit 1
+        fi
+
+        ((tries++))
+
+        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
+        sleep 3
+    done
 }
 
 __driveutils_nbd_mount () {
     echo "[ Mounting the drive image to the '$(realpath $DRIVE_MOUNT_PATH)' directory]"
 
-    mount_tries=1
+    tries=1
+    max_tries=5
     until mount /dev/nbd0p1 "$DRIVE_MOUNT_PATH"; do
-        echo "- Attempting to mount the drive. Attempt: $mount_tries"
+        echo "- Attempting to mount the drive. Attempt: $tries"
 
-        if ((mount_tries >= 5)); then
+        if ((tries >= 5)); then
             echo "[ Can not mount the drive. Shutting down. ]"
             set +e
             __driveutils_nbd_umount
@@ -38,8 +91,8 @@ __driveutils_nbd_mount () {
             exit 1
         fi
 
-        ((mount_tries++))
-        sleep 2
+        ((tries++))
+        sleep 3
     done
 
     echo "[ Drive was successfully mounted ]"
