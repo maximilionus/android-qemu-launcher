@@ -3,74 +3,22 @@
 
 __driveutils_load_modules () {
     echo "[ Loading the kernel modules ]"
-
-    tries=1
-    max_tries=5
-    until modprobe -v nbd max_part=8; do
-        if ((tries >= max_tries)); then
-            echo "[ Can load the kernel modules. Shutting down. ]"
-            exit 1
-        fi
-
-        ((tries++))
-
-        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
-        sleep 3
-    done
+    exec_with_retry "modprobe -v nbd max_part=8" "" "[ Can load the kernel modules. Shutting down. ]"
 }
 
 __driveutils_unload_modules () {
     echo "[ Unloading the kernel modules ]"
-
-    tries=1
-    max_tries=5
-    until rmmod -v nbd; do
-        if ((tries >= max_tries)); then
-            echo "[ Can not unload the kernel modules. Shutting down. ]"
-            exit 1
-        fi
-
-        ((tries++))
-
-        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
-        sleep 3
-    done
+    exec_with_retry "rmmod -v nbd" "" "[ Can not unload the kernel modules. Shutting down. ]"
 }
 
 __driveutils_nbd_connect () {
     echo "[ Connecting the drive to NBD ]"
-
-    tries=1
-    max_tries=5
-    until qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH; do
-        if ((tries >= max_tries)); then
-            echo "[ Can not connect the drive to NBD server. Shutting down. ]"
-            exit 1
-        fi
-
-        ((tries++))
-
-        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
-        sleep 3
-    done
+    exec_with_retry "qemu-nbd --connect=/dev/nbd0 $DRIVE_PATH" "" "[ Can not connect the drive to NBD server. Shutting down. ]"
 }
 
 __driveutils_nbd_disconnect () {
     echo "[ Disconnecting the drive from NBD ]"
-
-    tries=1
-    max_tries=5
-    until qemu-nbd --disconnect /dev/nbd0; do
-        if ((tries >= max_tries)); then
-            echo "[ Can not disconnect the drive from NBD server. Shutting down. ]"
-            exit 1
-        fi
-
-        ((tries++))
-
-        echo "Retrying in 3 sec. Attempt: $tries of $max_tries"
-        sleep 3
-    done
+    exec_with_retry "qemu-nbd --disconnect /dev/nbd0" "" "[ Can not disconnect the drive from NBD server. Shutting down. ]"
 }
 
 __driveutils_nbd_mount () {
