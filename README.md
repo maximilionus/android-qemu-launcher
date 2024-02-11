@@ -43,7 +43,7 @@ This list contains the names of Android images that are officially supported and
    Everything is done [...]
    ```
 
-4. Run the [launcher](./launcher.sh) with the **install** argument and the path to the Android image from step 2 next to it and proceed with basic Android installation on MBR *(Not GPT!)* drive layout and GRUB bootloader enabled:
+4. Run the [launcher](./launcher.sh) with the **install** argument and the path to the Android image from step 2 next to it and proceed with basic Android installation on MBR (DOS) drive layout and GRUB bootloader enabled:
    ```sh
    ./launcher.sh install <PATH_TO_ROM>
 

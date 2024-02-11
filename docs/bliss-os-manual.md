@@ -11,8 +11,9 @@ One of the most stable and feature-rich ROMs on the modern Android versions. Com
 
 - `14.10` (Android 11)
 - `15.8.6` (Android 12L)
+- `16.9.4` (Android 13)
 
 
 # Install
 1. Follow the [basic guide](../README.md#install) to install the OS.
-2. Each VM startup, in GRUB, you should select the `BlissOS-XX.XX YYYY-MM-DD QEMO/KVM` boot entry. This will improve graphics performance and overall VM stability. It will also allow you to change the screen resolution using the `video=WxH` kernel parameter.
+2. Each VM startup, in GRUB, you should select the `BlissOS-XX.XX YYYY-MM-DD QEMO/KVM` boot entry. This will improve graphics performance and overall VM stability. It will also allow you to change the screen resolution and aspect ratio using the `video=WxH` [kernel parameter](https://wiki.archlinux.org/title/Kernel_parameters).

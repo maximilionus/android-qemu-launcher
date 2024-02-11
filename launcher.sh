@@ -68,7 +68,7 @@ elif [ "$1" = "install" ]; then
     echo "Please read the manual in ./docs/ for your ROM if its"
     echo "officially supported by this launcher"
     echo
-    echo "NOTE: Be sure to select the MBR (Not GPT) layout for the drive with"
+    echo "NOTE: Be sure to select the MBR (DOS) layout for the drive with"
     echo "      ext4 formatting and GRUB bootloader enabled."
 elif [ "$1" = "init" ]; then
     # Initialize file structure for this launcher
@@ -79,9 +79,11 @@ elif [ "$1" = "init" ]; then
     _qemu_drive_size="${_qemu_drive_size:-20G}"
     qemu-img create -f qcow2 "$DRIVE_PATH" $_qemu_drive_size
 
-    echo -e "\nEverything is done. Now you should download the desired"
+    echo
+    echo "Everything is done. Now you should download the desired"
     echo "Android (x86_64 arch) image and launch this scipt with \"install\""
     echo "argument, providing the path to the image."
+    echo
     echo "EXAMPLE:"
     echo "  ./launcher.sh install ~/Downloads/downloaded-android-image.iso"
     exit 0
