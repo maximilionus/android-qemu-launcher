@@ -1,6 +1,5 @@
-# Android Qemu Launcher
 ## About
-Launcher and manuals to run **Android** images (x86_64 architecture) on Linux natively with hardware acceleration and other stuff.
+Utility and documentation to run hardware-accelerated x86_64 Android images on Linux QEMU KVM
 
 ## Supported ROM
 This list contains the names of Android images that are officially supported and tested with this launcher and have their own manuals in this repository, under the [docs](./docs/) directory.
